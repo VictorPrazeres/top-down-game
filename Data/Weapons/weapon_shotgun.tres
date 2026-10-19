@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://dhjhvt1lmyspb"]
+
+[ext_resource type="Texture2D" uid="uid://bbv84wvnnbldm" path="res://Sprites/Weapons/Tiles/tile_0007.png" id="1_w5epe"]
+[ext_resource type="Script" uid="uid://bnygd2hlflijc" path="res://Data/Weapons/weapon_data.gd" id="2_fuw24"]
+
+[resource]
+script = ExtResource("2_fuw24")
+weapon_name = "Shotgun"
+icon = ExtResource("1_w5epe")
+damage = 7.0
+cooldown = 4.0
+mana_cost = 5.0
+spread = 2.0
+bullet_speed = 500.0
+metadata/_custom_type_script = "uid://bnygd2hlflijc"

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://drct7ro7fwird"]
+
+[ext_resource type="PackedScene" uid="uid://x530ivciqjmp" path="res://Scenes/Weapons/Ranged/weapon_ranged_base.tscn" id="1_cttkb"]
+[ext_resource type="Resource" uid="uid://bykg4qvfrhb2v" path="res://Data/Weapons/weapon_sniper.tres" id="2_568rv"]
+[ext_resource type="Texture2D" uid="uid://b3162fce4jytf" path="res://Sprites/Weapons/Tiles/tile_0003.png" id="3_nlpnd"]
+
+[node name="WeaponRangedSniper" unique_id=1599778834 instance=ExtResource("1_cttkb")]
+data = ExtResource("2_568rv")
+
+[node name="Texture" parent="Pivot" parent_id_path=PackedInt32Array(1152001944) index="0" unique_id=362481797]
+position = Vector2(12, 0)
+texture = ExtResource("3_nlpnd")
+
+[node name="Marker2D" parent="Pivot" parent_id_path=PackedInt32Array(1152001944) index="1" unique_id=1265158947]
+position = Vector2(25.333334, 0)

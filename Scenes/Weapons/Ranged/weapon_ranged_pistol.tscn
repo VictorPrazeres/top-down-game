@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://dlbqto5nxjhcx"]
 
 [ext_resource type="PackedScene" uid="uid://x530ivciqjmp" path="res://Scenes/Weapons/Ranged/weapon_ranged_base.tscn" id="1_m3ejf"]
+[ext_resource type="Resource" uid="uid://st6hmgswhkq1" path="res://Data/Weapons/weapon_pistol.tres" id="2_5eq3f"]
 [ext_resource type="Texture2D" uid="uid://cqvwy8c5l0aod" path="res://Sprites/Weapons/Tiles/tile_0001.png" id="2_gco8q"]
 
 [node name="WeaponRangedPistol" unique_id=1599778834 instance=ExtResource("1_m3ejf")]
+data = ExtResource("2_5eq3f")
 
 [node name="Texture" parent="Pivot" parent_id_path=PackedInt32Array(1152001944) index="0" unique_id=362481797]
 position = Vector2(12, 0)
