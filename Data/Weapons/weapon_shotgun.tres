@@ -12,4 +12,5 @@ cooldown = 4.0
 mana_cost = 5.0
 spread = 2.0
 bullet_speed = 500.0
+description = "High damage close range, spreads many pellets."
 metadata/_custom_type_script = "uid://bnygd2hlflijc"

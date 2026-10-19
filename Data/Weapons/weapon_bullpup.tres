@@ -12,4 +12,5 @@ cooldown = 7.0
 mana_cost = 4.0
 spread = 2.0
 bullet_speed = 500.0
+description = "Small SMG, very fast fire rate, low damage per bullet."
 metadata/_custom_type_script = "uid://bnygd2hlflijc"

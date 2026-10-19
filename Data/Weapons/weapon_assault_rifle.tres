@@ -12,4 +12,5 @@ cooldown = 3.0
 mana_cost = 3.5
 spread = 15.0
 bullet_speed = 340.0
+description = "Powerful assault rifle, good damage,medium recoil."
 metadata/_custom_type_script = "uid://bnygd2hlflijc"

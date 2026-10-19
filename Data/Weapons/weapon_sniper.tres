@@ -12,4 +12,5 @@ cooldown = 2.4
 mana_cost = 2.0
 spread = 2.0
 bullet_speed = 500.0
+description = "Very high damage shot, long range and slow fire rate."
 metadata/_custom_type_script = "uid://bnygd2hlflijc"

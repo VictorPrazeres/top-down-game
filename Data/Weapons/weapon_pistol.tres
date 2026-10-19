@@ -12,4 +12,5 @@ cooldown = 0.4
 mana_cost = 1.0
 spread = 7.0
 bullet_speed = 250.0
+description = "Basic sidearm, cheap and reliable, medium accuracy."
 metadata/_custom_type_script = "uid://bnygd2hlflijc"

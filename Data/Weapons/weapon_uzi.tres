@@ -12,4 +12,5 @@ cooldown = 0.2
 mana_cost = 0.7
 spread = 10.0
 bullet_speed = 350.0
+description = "Micro SMG, extremely fast fire rate, low accuracy."
 metadata/_custom_type_script = "uid://bnygd2hlflijc"
