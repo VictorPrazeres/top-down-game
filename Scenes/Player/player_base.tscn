@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bxo8m5duokrok" path="res://Scenes/Player/player.gd" id="1_jfsk2"]
 [ext_resource type="PackedScene" uid="uid://cm774d4hp3584" path="res://Scenes/Components/health_component.tscn" id="2_isex5"]
 [ext_resource type="Texture2D" uid="uid://dawvmsgg5mc6o" path="res://Sprites/Shadow.png" id="2_kxl1r"]
+[ext_resource type="Script" uid="uid://kl5gbisqdubu" path="res://Scenes/Player/weapon_controller.gd" id="4_kpr8i"]
 
 [node name="PlayerBase" type="CharacterBody2D" unique_id=990646189]
 script = ExtResource("1_jfsk2")
@@ -21,6 +22,9 @@ unique_name_in_owner = true
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=272556118]
 
 [node name="Camera" type="Camera2D" parent="." unique_id=794809023]
+
+[node name="WeaponController" type="Node2D" parent="." unique_id=1960919312]
+script = ExtResource("4_kpr8i")
 
 [connection signal="on_unit_damaged" from="HealthComponent" to="." method="_on_health_component_on_unit_damaged"]
 [connection signal="on_unit_dead" from="HealthComponent" to="." method="_on_health_component_on_unit_dead"]

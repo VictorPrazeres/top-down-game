@@ -1,4 +1,4 @@
-class_name Arena extends Node2D
+class_name Arena extends Node
 
 @onready var health_bar: TextureProgressBar = %HealthBar
 @onready var mana_bar: TextureProgressBar = %ManaBar
