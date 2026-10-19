@@ -1,5 +1,7 @@
 class_name MainMenu extends Control
 
+@export var menu_cursor: Texture2D
+
 @onready var main_buttons: Control = $MainButtons
 @onready var settings_buttons: Control = $SettingsButtons
 @onready var ui_sound: AudioStreamPlayer = $UISound
@@ -10,6 +12,7 @@ class_name MainMenu extends Control
 
 func _ready() -> void:
 	Global.load_data()
+	Cursor.texture.texture = menu_cursor
 	update_audio_bus("Music", music_label, Global.settings.music)
 	update_audio_bus("SFX", sfx_label, Global.settings.sfx)
 	update_fullscreen(Global.settings.fullscreen)

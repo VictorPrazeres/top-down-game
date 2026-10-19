@@ -1,10 +1,13 @@
 class_name Arena extends Node
 
+@export var arena_cursor: Texture2D
+
 @onready var health_bar: TextureProgressBar = %HealthBar
 @onready var mana_bar: TextureProgressBar = %ManaBar
 
 
 func _ready() -> void:
+	Cursor.texture.texture = arena_cursor
 	EventBus.on_player_health_updated.connect(_on_player_health_updated)
 
 

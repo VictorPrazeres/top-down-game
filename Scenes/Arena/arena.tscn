@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dy8e3xkc5qdbp" path="res://Sprites/Interface/Tilemap/tilemap_packed.png" id="1_fp5lk"]
 [ext_resource type="Script" uid="uid://b5rn081fr231l" path="res://Scenes/Arena/arena.gd" id="1_qnyor"]
+[ext_resource type="Texture2D" uid="uid://b5o6og4r1humu" path="res://Sprites/Weapons/Tiles/tile_0025.png" id="2_0ibrr"]
 [ext_resource type="Texture2D" uid="uid://ccab6or5n1nai" path="res://Sprites/Players/tile_0000.png" id="2_6o3nl"]
 [ext_resource type="Texture2D" uid="uid://dxp7naqy4gvku" path="res://Sprites/Interface/bar_under.png" id="3_t7yvt"]
 [ext_resource type="Texture2D" uid="uid://bvr7in7eey6cb" path="res://Sprites/Interface/bar_over.png" id="4_11not"]
@@ -15,6 +16,7 @@ region = Rect2(48, 0, 48, 48)
 
 [node name="Arena" type="Node" unique_id=1545503254]
 script = ExtResource("1_qnyor")
+arena_cursor = ExtResource("2_0ibrr")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1544990733]
 
