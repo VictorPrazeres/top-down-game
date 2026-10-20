@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dy8e3xkc5qdbp" path="res://Sprites/Interface/Tilemap/tilemap_packed.png" id="1_olqp3"]
 [ext_resource type="Texture2D" uid="uid://cqvwy8c5l0aod" path="res://Sprites/Weapons/Tiles/tile_0001.png" id="2_1ovoo"]
+[ext_resource type="Script" uid="uid://bpapyirq4xcsa" path="res://Scenes/UI/WeaponCard/weapon_card.gd" id="2_8nxtn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ovoo"]
 atlas = ExtResource("1_olqp3")
@@ -10,11 +11,12 @@ region = Rect2(192, 0, 48, 48)
 [node name="WeaponCard" type="TextureButton" unique_id=1553945727]
 texture_normal = SubResource("AtlasTexture_1ovoo")
 stretch_mode = 5
+script = ExtResource("2_8nxtn")
 
 [node name="HoverSound" type="AudioStreamPlayer" parent="." unique_id=234159082]
 
 [node name="Icon" type="TextureRect" parent="." unique_id=605339894]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
