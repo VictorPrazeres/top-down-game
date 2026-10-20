@@ -9,6 +9,12 @@ class_name Arena extends Node
 func _ready() -> void:
 	Cursor.texture.texture = arena_cursor
 	EventBus.on_player_health_updated.connect(_on_player_health_updated)
+	load_game_selection()
+
+
+func load_game_selection() -> void:
+	var player = Global.get_player().instantiate()
+	add_child(player)
 
 
 func _on_player_health_updated(current_health: float, max_health: float) -> void:
