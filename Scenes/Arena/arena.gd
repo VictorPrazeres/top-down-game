@@ -13,8 +13,9 @@ func _ready() -> void:
 
 
 func load_game_selection() -> void:
-	var player = Global.get_player().instantiate()
+	var player: Player = Global.get_player().instantiate()
 	add_child(player)
+	player.weapon_controller.equip_weapon()
 
 
 func _on_player_health_updated(current_health: float, max_health: float) -> void:

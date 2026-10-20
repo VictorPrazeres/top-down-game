@@ -12,12 +12,25 @@ var all_playes: Dictionary[String, PackedScene] = {
 	"Mouse": preload("uid://dmur05tmvsy37"),
 	"Beaver": preload("uid://denj0kqwpgd5i")
 }
+var all_weapons: Dictionary[String, PackedScene] = {
+	"AK47": preload("uid://da1ohv821n2wj"),
+	"Mac 10": preload("uid://bnihvpn56sekg"),
+	"MP5": preload("uid://cxs670ucjfo6c"),
+	"Pistol": preload("uid://dlbqto5nxjhcx"),
+	"Shotgun": preload("uid://c8awu3dchgqh7"),
+	"Sniper": preload("uid://drct7ro7fwird"),
+	"Uzi": preload("uid://d0tbw4m0jq6yj")
+}
 var selected_player: PlayerData
 var selected_weapon: WeaponData
 
 
 func get_player() -> PackedScene:
 	return all_playes[selected_player.id]
+
+
+func get_weapon() -> PackedScene:
+	return all_weapons[selected_weapon.weapon_name]
 
 
 func save_data() -> void:

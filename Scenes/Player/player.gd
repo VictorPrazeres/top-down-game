@@ -9,6 +9,7 @@ var direction: Vector2
 @onready var visuals: Node2D = $Visuals
 @onready var anim_texture: AnimatedSprite2D = %AnimTexture
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var weapon_controller: WeaponController = $WeaponController
 
 
 func _ready() -> void:
