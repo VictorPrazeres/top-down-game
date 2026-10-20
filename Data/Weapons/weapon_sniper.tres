@@ -7,10 +7,10 @@
 script = ExtResource("2_0t7cw")
 weapon_name = "Sniper"
 icon = ExtResource("1_2yrms")
-damage = 8.0
-cooldown = 2.4
-mana_cost = 2.0
-spread = 2.0
-bullet_speed = 500.0
+damage = 6.0
+cooldown = 1.2
+mana_cost = 2.5
+spread = 1.0
+bullet_speed = 400.0
 description = "Very high damage shot, long range and slow fire rate."
 metadata/_custom_type_script = "uid://bnygd2hlflijc"

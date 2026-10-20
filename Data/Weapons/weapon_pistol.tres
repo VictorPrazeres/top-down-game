@@ -7,10 +7,10 @@
 script = ExtResource("1_5v7y6")
 weapon_name = "Pistol"
 icon = ExtResource("1_qufyp")
-damage = 1.0
-cooldown = 0.4
+damage = 1.4
+cooldown = 0.35
 mana_cost = 1.0
-spread = 7.0
-bullet_speed = 250.0
+spread = 3.0
+bullet_speed = 260.0
 description = "Basic sidearm, cheap and reliable, medium accuracy."
 metadata/_custom_type_script = "uid://bnygd2hlflijc"

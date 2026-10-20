@@ -5,12 +5,12 @@
 
 [resource]
 script = ExtResource("2_3u7rg")
-weapon_name = "Lmg"
+weapon_name = "MP5"
 icon = ExtResource("1_vjoer")
-damage = 1.5
-cooldown = 0.5
-mana_cost = 1.5
-spread = 15.0
-bullet_speed = 300.0
+damage = 1.2
+cooldown = 0.22
+mana_cost = 0.8
+spread = 5.0
+bullet_speed = 280.0
 description = "Balanced SMG, accurate, good for short range fights."
 metadata/_custom_type_script = "uid://bnygd2hlflijc"

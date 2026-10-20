@@ -7,10 +7,10 @@
 script = ExtResource("2_d6mai")
 weapon_name = "Uzi"
 icon = ExtResource("1_ywvm0")
-damage = 0.6
-cooldown = 0.2
-mana_cost = 0.7
+damage = 0.8
+cooldown = 0.12
+mana_cost = 0.5
 spread = 10.0
-bullet_speed = 350.0
+bullet_speed = 320.0
 description = "Micro SMG, extremely fast fire rate, low accuracy."
 metadata/_custom_type_script = "uid://bnygd2hlflijc"
