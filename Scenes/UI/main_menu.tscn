@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c3om63rgvknbn" path="res://Scenes/UI/main_menu.gd" id="1_5wsvm"]
 [ext_resource type="PackedScene" uid="uid://dei8c280bttf8" path="res://Scenes/UI/background.tscn" id="3_4pqbp"]
+[ext_resource type="AudioStream" uid="uid://dlyw3ke5ldgn7" path="res://Sounds/button_hover.wav" id="4_gih0s"]
 [ext_resource type="LabelSettings" uid="uid://vxh5qk55fkll" path="res://Extra/font_48.tres" id="4_u7lva"]
 [ext_resource type="Texture2D" uid="uid://dy8e3xkc5qdbp" path="res://Sprites/Interface/Tilemap/tilemap_packed.png" id="5_4pqbp"]
 [ext_resource type="LabelSettings" uid="uid://4rm1gvou0f2t" path="res://Extra/font_16.tres" id="6_gih0s"]
@@ -28,6 +29,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5wsvm")
 menu_cursor = SubResource("AtlasTexture_gih0s")
+
+[node name="UISound" type="AudioStreamPlayer" parent="." unique_id=1486767586]
+stream = ExtResource("7_gih0s")
+bus = &"SFX"
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="." unique_id=262451064]
+stream = ExtResource("4_gih0s")
+bus = &"SFX"
 
 [node name="Background" parent="." unique_id=1102913669 instance=ExtResource("3_4pqbp")]
 layout_mode = 1
@@ -336,14 +345,17 @@ label_settings = ExtResource("6_gih0s")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UISound" type="AudioStreamPlayer" parent="." unique_id=1486767586]
-stream = ExtResource("7_gih0s")
-bus = &"SFX"
-
+[connection signal="mouse_entered" from="MainButtons/VBoxContainer/Play/PlayButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/Play/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="MainButtons/VBoxContainer/Settings/SettingsButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/Settings/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="mouse_entered" from="MainButtons/VBoxContainer/Quit/QuitButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/Quit/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="mouse_entered" from="SettingsButtons/VBoxContainer/Music/MusicButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="SettingsButtons/VBoxContainer/Music/MusicButton" to="." method="_on_music_button_pressed"]
+[connection signal="mouse_entered" from="SettingsButtons/VBoxContainer/SFX/SFXButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="SettingsButtons/VBoxContainer/SFX/SFXButton" to="." method="_on_sfx_button_pressed"]
+[connection signal="mouse_entered" from="SettingsButtons/VBoxContainer/Window/WindowButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="SettingsButtons/VBoxContainer/Window/WindowButton" to="." method="_on_window_button_pressed"]
+[connection signal="mouse_entered" from="SettingsButtons/VBoxContainer/Back/BackButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="SettingsButtons/VBoxContainer/Back/BackButton" to="." method="_on_back_button_pressed"]

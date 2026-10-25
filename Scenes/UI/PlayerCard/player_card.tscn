@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://clv0dnuyxhqg8" path="res://Sprites/Interface/Button_Blue.png" id="1_pdk5n"]
 [ext_resource type="Script" uid="uid://iubmhj47b43t" path="res://Scenes/UI/PlayerCard/player_card.gd" id="2_5382o"]
 [ext_resource type="Texture2D" uid="uid://ccab6or5n1nai" path="res://Sprites/Players/tile_0000.png" id="2_x1rxe"]
+[ext_resource type="AudioStream" uid="uid://dlyw3ke5ldgn7" path="res://Sounds/button_hover.wav" id="3_saay4"]
 
 [node name="PlayerCard" type="TextureButton" unique_id=545003619]
 custom_minimum_size = Vector2(60, 60)
@@ -11,6 +12,8 @@ stretch_mode = 5
 script = ExtResource("2_5382o")
 
 [node name="HoverSound" type="AudioStreamPlayer" parent="." unique_id=321301345]
+stream = ExtResource("3_saay4")
+bus = &"SFX"
 
 [node name="Icon" type="TextureRect" parent="." unique_id=856012624]
 layout_mode = 1
@@ -25,5 +28,8 @@ offset_right = 20.0
 offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("2_x1rxe")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

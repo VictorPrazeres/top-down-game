@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dy8e3xkc5qdbp" path="res://Sprites/Interface/Tilemap/tilemap_packed.png" id="1_olqp3"]
 [ext_resource type="Texture2D" uid="uid://cqvwy8c5l0aod" path="res://Sprites/Weapons/Tiles/tile_0001.png" id="2_1ovoo"]
 [ext_resource type="Script" uid="uid://bpapyirq4xcsa" path="res://Scenes/UI/WeaponCard/weapon_card.gd" id="2_8nxtn"]
+[ext_resource type="AudioStream" uid="uid://dlyw3ke5ldgn7" path="res://Sounds/button_hover.wav" id="3_o5xhw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ovoo"]
 atlas = ExtResource("1_olqp3")
@@ -14,6 +15,8 @@ stretch_mode = 5
 script = ExtResource("2_8nxtn")
 
 [node name="HoverSound" type="AudioStreamPlayer" parent="." unique_id=234159082]
+stream = ExtResource("3_o5xhw")
+bus = &"SFX"
 
 [node name="Icon" type="TextureRect" parent="." unique_id=605339894]
 custom_minimum_size = Vector2(40, 40)
@@ -29,7 +32,10 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("2_1ovoo")
 expand_mode = 1
 stretch_mode = 5
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

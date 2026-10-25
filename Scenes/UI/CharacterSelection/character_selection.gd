@@ -10,6 +10,7 @@ const WEAPON_CARD_SCENE = preload("uid://c54j4u6atitcq")
 @onready var player_container: HBoxContainer = $PlayerContainer
 @onready var weapon_container: HBoxContainer = $WeaponContainer
 @onready var ui_sound: AudioStreamPlayer = $UISound
+@onready var hover_sound: AudioStreamPlayer = $HoverSound
 
 
 func _ready() -> void:
@@ -38,6 +39,9 @@ func load_selection_items() -> void:
 
 
 func _on_play_button_pressed() -> void:
+	if not Global.selected_player and not Global.selected_weapon:
+		return
+	
 	ui_sound.play()
 	Transition.transition_to("res://Scenes/Arena/arena.tscn")
 
@@ -55,3 +59,11 @@ func _on_player_card_pressed(data: PlayerData) -> void:
 func _on_weapon_card_pressed(data: WeaponData) -> void:
 	ui_sound.play()
 	Global.selected_weapon = data
+
+
+func _on_play_button_mouse_entered() -> void:
+	hover_sound.play()
+
+
+func _on_back_button_mouse_entered() -> void:
+	hover_sound.play()

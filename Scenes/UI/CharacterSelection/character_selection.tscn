@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://bykg4qvfrhb2v" path="res://Data/Weapons/weapon_sniper.tres" id="13_bw0q0"]
 [ext_resource type="Resource" uid="uid://bf6w4a60gmn3k" path="res://Data/Weapons/weapon_uzi.tres" id="14_uwpgq"]
 [ext_resource type="AudioStream" uid="uid://dtxhputnlac6" path="res://Sounds/select-a.ogg" id="16_bjn16"]
+[ext_resource type="AudioStream" uid="uid://dlyw3ke5ldgn7" path="res://Sounds/button_hover.wav" id="17_c5bnh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vojml"]
 atlas = ExtResource("5_26u8j")
@@ -48,6 +49,10 @@ weapons = Array[ExtResource("7_8hxk8")]([ExtResource("8_u0wir"), ExtResource("9_
 
 [node name="UISound" type="AudioStreamPlayer" parent="." unique_id=1627067851]
 stream = ExtResource("16_bjn16")
+bus = &"SFX"
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="." unique_id=762715706]
+stream = ExtResource("17_c5bnh")
 bus = &"SFX"
 
 [node name="Background" parent="." unique_id=1102913669 instance=ExtResource("1_n66v8")]
@@ -191,5 +196,7 @@ label_settings = ExtResource("6_g551c")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="mouse_entered" from="Buttons/PlayButton" to="." method="_on_play_button_mouse_entered"]
 [connection signal="pressed" from="Buttons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="Buttons/BackButton" to="." method="_on_back_button_mouse_entered"]
 [connection signal="pressed" from="Buttons/BackButton" to="." method="_on_back_button_pressed"]
