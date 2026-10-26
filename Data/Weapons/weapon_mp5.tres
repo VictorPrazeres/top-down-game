@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://c1i20mq2xd4ck"]
 
+[ext_resource type="PackedScene" uid="uid://d7y12tp44mkm" path="res://Scenes/Bullets/bullet_mp_5.tscn" id="1_qoq3b"]
 [ext_resource type="Texture2D" uid="uid://d0unfm6gf7rj5" path="res://Sprites/Weapons/Tiles/tile_0004.png" id="1_vjoer"]
 [ext_resource type="Script" uid="uid://bnygd2hlflijc" path="res://Data/Weapons/weapon_data.gd" id="2_3u7rg"]
 
@@ -12,5 +13,6 @@ cooldown = 0.22
 mana_cost = 0.8
 spread = 5.0
 bullet_speed = 280.0
+bullet_scene = ExtResource("1_qoq3b")
 description = "Balanced SMG, accurate, good for short range fights."
 metadata/_custom_type_script = "uid://bnygd2hlflijc"

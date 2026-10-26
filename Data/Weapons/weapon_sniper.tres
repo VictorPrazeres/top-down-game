@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://bykg4qvfrhb2v"]
 
+[ext_resource type="PackedScene" uid="uid://cuwgm20p4qit2" path="res://Scenes/Bullets/bullet_sniper.tscn" id="1_0t7cw"]
 [ext_resource type="Texture2D" uid="uid://b3162fce4jytf" path="res://Sprites/Weapons/Tiles/tile_0003.png" id="1_2yrms"]
 [ext_resource type="Script" uid="uid://bnygd2hlflijc" path="res://Data/Weapons/weapon_data.gd" id="2_0t7cw"]
 
@@ -12,5 +13,6 @@ cooldown = 1.2
 mana_cost = 2.5
 spread = 1.0
 bullet_speed = 400.0
+bullet_scene = ExtResource("1_0t7cw")
 description = "Very high damage shot, long range and slow fire rate."
 metadata/_custom_type_script = "uid://bnygd2hlflijc"

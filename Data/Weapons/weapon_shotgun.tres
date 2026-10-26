@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://dhjhvt1lmyspb"]
 
+[ext_resource type="PackedScene" uid="uid://byhmjddy3nch1" path="res://Scenes/Bullets/bullet_shotgun.tscn" id="1_fuw24"]
 [ext_resource type="Texture2D" uid="uid://bbv84wvnnbldm" path="res://Sprites/Weapons/Tiles/tile_0007.png" id="1_w5epe"]
 [ext_resource type="Script" uid="uid://bnygd2hlflijc" path="res://Data/Weapons/weapon_data.gd" id="2_fuw24"]
 
@@ -12,5 +13,6 @@ cooldown = 0.7
 mana_cost = 2.0
 spread = 10.0
 bullet_speed = 260.0
+bullet_scene = ExtResource("1_fuw24")
 description = "High damage close range, spreads many pellets."
 metadata/_custom_type_script = "uid://bnygd2hlflijc"

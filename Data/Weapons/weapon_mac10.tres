@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://0lgm2ls8jc4d"]
 
+[ext_resource type="PackedScene" uid="uid://b3twtc2mxlk32" path="res://Scenes/Bullets/bullet_mac_10.tscn" id="1_gqq7x"]
 [ext_resource type="Texture2D" uid="uid://cgch73n7h4u3r" path="res://Sprites/Weapons/Tiles/tile_0006.png" id="1_hcw5o"]
 [ext_resource type="Script" uid="uid://bnygd2hlflijc" path="res://Data/Weapons/weapon_data.gd" id="2_gqq7x"]
 
@@ -12,5 +13,6 @@ cooldown = 0.15
 mana_cost = 0.7
 spread = 7.0
 bullet_speed = 300.0
+bullet_scene = ExtResource("1_gqq7x")
 description = "Small SMG, very fast fire rate, low damage per bullet."
 metadata/_custom_type_script = "uid://bnygd2hlflijc"

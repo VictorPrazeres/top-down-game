@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://bf6w4a60gmn3k"]
 
+[ext_resource type="PackedScene" uid="uid://boo3gqqnuohvj" path="res://Scenes/Bullets/bullet_uzi.tscn" id="1_d6mai"]
 [ext_resource type="Texture2D" uid="uid://dhmowywd5bkl7" path="res://Sprites/Weapons/Tiles/tile_0002.png" id="1_ywvm0"]
 [ext_resource type="Script" uid="uid://bnygd2hlflijc" path="res://Data/Weapons/weapon_data.gd" id="2_d6mai"]
 
@@ -12,5 +13,6 @@ cooldown = 0.12
 mana_cost = 0.5
 spread = 10.0
 bullet_speed = 320.0
+bullet_scene = ExtResource("1_d6mai")
 description = "Micro SMG, extremely fast fire rate, low accuracy."
 metadata/_custom_type_script = "uid://bnygd2hlflijc"
