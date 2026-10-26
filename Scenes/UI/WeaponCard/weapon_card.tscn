@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bpapyirq4xcsa" path="res://Scenes/UI/WeaponCard/weapon_card.gd" id="2_8nxtn"]
 [ext_resource type="AudioStream" uid="uid://dlyw3ke5ldgn7" path="res://Sounds/button_hover.wav" id="3_o5xhw"]
 [ext_resource type="Texture2D" uid="uid://btvvlw1s6noca" path="res://Sprites/Interface/Selector.png" id="5_luq1e"]
+[ext_resource type="PackedScene" uid="uid://cv2x5aq8lkin5" path="res://Scenes/UI/DescriptionPanel/description_panel.tscn" id="6_cq8ta"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ovoo"]
 atlas = ExtResource("1_olqp3")
@@ -58,4 +59,13 @@ texture = ExtResource("5_luq1e")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="DescriptionPanel" parent="." unique_id=1455646478 instance=ExtResource("6_cq8ta")]
+visible = false
+layout_mode = 1
+offset_left = -78.0
+offset_top = -101.0
+offset_right = 74.0
+offset_bottom = -49.0
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

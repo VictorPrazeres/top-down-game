@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ccab6or5n1nai" path="res://Sprites/Players/tile_0000.png" id="2_x1rxe"]
 [ext_resource type="AudioStream" uid="uid://dlyw3ke5ldgn7" path="res://Sounds/button_hover.wav" id="3_saay4"]
 [ext_resource type="Texture2D" uid="uid://btvvlw1s6noca" path="res://Sprites/Interface/Selector.png" id="5_nvhj8"]
+[ext_resource type="PackedScene" uid="uid://cv2x5aq8lkin5" path="res://Scenes/UI/DescriptionPanel/description_panel.tscn" id="6_u5wgv"]
 
 [node name="PlayerCard" type="TextureButton" unique_id=545003619]
 custom_minimum_size = Vector2(60, 60)
@@ -52,4 +53,13 @@ texture = ExtResource("5_nvhj8")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="DescriptionPanel" parent="." unique_id=1455646478 instance=ExtResource("6_u5wgv")]
+visible = false
+layout_mode = 1
+offset_left = -70.0
+offset_top = -97.0
+offset_right = 70.0
+offset_bottom = -57.0
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
