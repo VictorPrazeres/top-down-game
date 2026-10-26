@@ -4,6 +4,7 @@ var data: WeaponData
 
 @onready var icon: TextureRect = $Icon
 @onready var hover_sound: AudioStreamPlayer = $HoverSound
+@onready var selector: TextureRect = $Selector
 
 
 func set_data(value: WeaponData) -> void:
