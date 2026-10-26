@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://st6hmgswhkq1"]
 
 [ext_resource type="Script" uid="uid://bnygd2hlflijc" path="res://Data/Weapons/weapon_data.gd" id="1_5v7y6"]
+[ext_resource type="PackedScene" uid="uid://dvmbo66ao6yjf" path="res://Scenes/Bullets/bullet_pistol.tscn" id="1_5vwyi"]
 [ext_resource type="Texture2D" uid="uid://cqvwy8c5l0aod" path="res://Sprites/Weapons/Tiles/tile_0001.png" id="1_qufyp"]
 
 [resource]
@@ -12,5 +13,6 @@ cooldown = 0.35
 mana_cost = 1.0
 spread = 3.0
 bullet_speed = 260.0
+bullet_scene = ExtResource("1_5vwyi")
 description = "Basic sidearm, cheap and reliable, medium accuracy."
 metadata/_custom_type_script = "uid://bnygd2hlflijc"
