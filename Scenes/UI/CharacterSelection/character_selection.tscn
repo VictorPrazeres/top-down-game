@@ -21,6 +21,8 @@
 [ext_resource type="Resource" uid="uid://bykg4qvfrhb2v" path="res://Data/Weapons/weapon_sniper.tres" id="13_bw0q0"]
 [ext_resource type="Resource" uid="uid://bf6w4a60gmn3k" path="res://Data/Weapons/weapon_uzi.tres" id="14_uwpgq"]
 [ext_resource type="AudioStream" uid="uid://dtxhputnlac6" path="res://Sounds/select-a.ogg" id="16_bjn16"]
+[ext_resource type="Resource" uid="uid://b0fmwek4gnxlh" path="res://Data/Weapons/weapon_sword.tres" id="16_tfq0b"]
+[ext_resource type="Resource" uid="uid://bnso7lnghrsu6" path="res://Data/Weapons/weapon_axe.tres" id="17_8hxk8"]
 [ext_resource type="AudioStream" uid="uid://dlyw3ke5ldgn7" path="res://Sounds/button_hover.wav" id="17_c5bnh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vojml"]
@@ -45,7 +47,7 @@ grow_vertical = 2
 script = ExtResource("1_80tfl")
 selection_cursor = SubResource("AtlasTexture_vojml")
 players = Array[ExtResource("2_vojml")]([ExtResource("3_bjn16"), ExtResource("4_c5bnh"), ExtResource("5_daxk4"), ExtResource("6_tfq0b")])
-weapons = Array[ExtResource("7_8hxk8")]([ExtResource("8_u0wir"), ExtResource("9_joq81"), ExtResource("10_wqfu2"), ExtResource("11_f5sk0"), ExtResource("12_l2dwk"), ExtResource("13_bw0q0"), ExtResource("14_uwpgq")])
+weapons = Array[ExtResource("7_8hxk8")]([ExtResource("8_u0wir"), ExtResource("9_joq81"), ExtResource("10_wqfu2"), ExtResource("11_f5sk0"), ExtResource("12_l2dwk"), ExtResource("13_bw0q0"), ExtResource("14_uwpgq"), ExtResource("16_tfq0b"), ExtResource("17_8hxk8")])
 
 [node name="UISound" type="AudioStreamPlayer" parent="." unique_id=1627067851]
 stream = ExtResource("16_bjn16")

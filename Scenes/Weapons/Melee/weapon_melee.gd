@@ -1,6 +1,6 @@
 class_name WeaponMelee extends Weapon
 
-var can_use: bool
+var can_use: bool = true
 
 @onready var texture: Sprite2D = %Texture
 @onready var slash: GPUParticles2D = %SlashParticle

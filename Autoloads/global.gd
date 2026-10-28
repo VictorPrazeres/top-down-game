@@ -6,7 +6,7 @@ var settings: Dictionary = {
 	"sfx": true,
 	"fullscreen": true
 }
-var all_playes: Dictionary[String, PackedScene] = {
+var all_players: Dictionary[String, PackedScene] = {
 	"Bunny": preload("uid://brqlu552oijhw"),
 	"Dog": preload("uid://c5oxdpdqidm62"),
 	"Mouse": preload("uid://dmur05tmvsy37"),
@@ -19,7 +19,9 @@ var all_weapons: Dictionary[String, PackedScene] = {
 	"Pistol": preload("uid://dlbqto5nxjhcx"),
 	"Shotgun": preload("uid://c8awu3dchgqh7"),
 	"Sniper": preload("uid://drct7ro7fwird"),
-	"Uzi": preload("uid://d0tbw4m0jq6yj")
+	"Uzi": preload("uid://d0tbw4m0jq6yj"),
+	"Sword": preload("uid://0o45tdqijyqc"),
+	"Axe": preload("uid://cdf8e1ug5o42i")
 }
 var selected_player: PlayerData
 var selected_weapon: WeaponData
@@ -30,7 +32,7 @@ func _ready() -> void:
 
 
 func get_player() -> PackedScene:
-	return all_playes[selected_player.id]
+	return all_players[selected_player.id]
 
 
 func get_weapon() -> PackedScene:
