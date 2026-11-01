@@ -1,6 +1,7 @@
 extends Node
 
 const EXPLOSION_EFFECT_SCENE = preload("uid://gusc66iqufsn")
+const DAMAGE_TEXT_SCENE = preload("uid://bbodibp7vmq8c")
 
 var save_path = "user://save.json"
 var settings: Dictionary = {
@@ -45,6 +46,14 @@ func create_explosion(pos: Vector2) -> void:
 	var explosion: Node2D = EXPLOSION_EFFECT_SCENE.instantiate()
 	explosion.global_position = pos
 	get_tree().root.add_child(explosion)
+
+
+func create_damage_text(value: float, pos: Vector2) -> void:
+	var damage: DamageText = DAMAGE_TEXT_SCENE.instantiate()
+	get_parent().add_child(damage)
+	var random_pos = randf_range(0, TAU)
+	damage.global_position = pos + Vector2.RIGHT.rotated(random_pos) * 20
+	damage.setup(value)
 
 
 func save_data() -> void:

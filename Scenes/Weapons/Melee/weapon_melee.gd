@@ -22,7 +22,8 @@ func use_weapon() -> void:
 	cooldown.start()
 	slash_sound.play()
 	animator.play("slash")
-	print(entities)
+	for enemy: Node2D in entities:
+		Global.create_damage_text(data.damage, enemy.global_position)
 	
 	slash.global_rotation = pivot.global_rotation
 	slash.emitting = true
