@@ -1,5 +1,7 @@
 extends Node
 
+const EXPLOSION_EFFECT_SCENE = preload("uid://gusc66iqufsn")
+
 var save_path = "user://save.json"
 var settings: Dictionary = {
 	"music": true,
@@ -37,6 +39,12 @@ func get_player() -> PackedScene:
 
 func get_weapon() -> PackedScene:
 	return all_weapons[selected_weapon.weapon_name]
+
+
+func create_explosion(pos: Vector2) -> void:
+	var explosion: Node2D = EXPLOSION_EFFECT_SCENE.instantiate()
+	explosion.global_position = pos
+	get_tree().root.add_child(explosion)
 
 
 func save_data() -> void:

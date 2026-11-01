@@ -1,6 +1,7 @@
 class_name WeaponMelee extends Weapon
 
 var can_use: bool = true
+var entities: Array[Node2D]
 
 @onready var texture: Sprite2D = %Texture
 @onready var slash: GPUParticles2D = %SlashParticle
@@ -21,6 +22,7 @@ func use_weapon() -> void:
 	cooldown.start()
 	slash_sound.play()
 	animator.play("slash")
+	print(entities)
 	
 	slash.global_rotation = pivot.global_rotation
 	slash.emitting = true
@@ -34,3 +36,13 @@ func _input(event: InputEvent) -> void:
 func _on_cooldown_timeout() -> void:
 	can_use = true
 	animator.play("idle")
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if is_instance_valid(body):
+		entities.append(body)
+
+
+func _on_hitbox_body_exited(body: Node2D) -> void:
+	if is_instance_valid(body):
+		entities.erase(body)

@@ -13,4 +13,5 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(_body: Node2D) -> void:
+	Global.create_explosion(global_position)
 	queue_free()
