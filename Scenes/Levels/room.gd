@@ -1,1 +1,1 @@
-class_name Room extends Node2D
+class_name LevelRoom extends Node2D
