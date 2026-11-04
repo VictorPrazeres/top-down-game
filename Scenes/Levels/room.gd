@@ -1,16 +1,53 @@
 class_name LevelRoom extends Node2D
 
+var tiles: Array[Vector2i]
+var is_cleared: bool
+
 @onready var player_spawn_pos: Marker2D = $PlayerSpawnPos
+@onready var tile_data: TileMapLayer = $TileData
 @onready var room_walls: Dictionary[Vector2i, TileMapLayer] = {
 	Vector2i.UP: %WallUP,
 	Vector2i.RIGHT: %WallRight,
 	Vector2i.DOWN: %WallDown,
 	Vector2i.LEFT: %WallLeft
 }
+@onready var clear_door_nodes: Dictionary[Vector2i, TileMapLayer] = {
+	Vector2i.UP: %DoorUP,
+	Vector2i.RIGHT: %DoorRight,
+	Vector2i.DOWN: %DoorDown,
+	Vector2i.LEFT: %DoorLeft
+}
 
 
 func _ready() -> void:
-	close_all_walls()
+	#close_all_walls()
+	register_tiles()
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		lock_room()
+	if event.is_action_pressed("ui_cancel"):
+		unlock_room()
+
+
+func register_tiles() -> void:
+	for tile in tile_data.get_used_cells():
+		tiles.append(tile)
+
+
+func lock_room() -> void:
+	for direction in clear_door_nodes:
+		var wall_door = room_walls[direction]
+		var clear_door = clear_door_nodes[direction]
+		
+		if wall_door and not wall_door.enabled:
+			clear_door.enabled = true
+
+
+func unlock_room() -> void:
+	for direction in clear_door_nodes:
+		clear_door_nodes[direction].enabled = false
 
 
 func open_wall(direction: Vector2i) -> void:
