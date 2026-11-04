@@ -25,7 +25,7 @@ func _ready() -> void:
 	select_special_rooms()
 	create_rooms()
 	create_corridors()
-	#load_game_selection()
+	load_game_selection()
 
 
 func generate_level_layout() -> void:
@@ -122,7 +122,10 @@ func find_farthest_room() -> Vector2i:
 
 func load_game_selection() -> void:
 	var player: Player = Global.get_player().instantiate()
+	var first_room: LevelRoom = grid[Vector2i.ZERO]
+	var spawn_pos: Marker2D = first_room.player_spawn_pos
 	add_child(player)
+	player.global_position = spawn_pos.global_position
 	player.weapon_controller.equip_weapon()
 
 

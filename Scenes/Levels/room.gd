@@ -1,5 +1,6 @@
 class_name LevelRoom extends Node2D
 
+@onready var player_spawn_pos: Marker2D = $PlayerSpawnPos
 @onready var room_walls: Dictionary[Vector2i, TileMapLayer] = {
 	Vector2i.UP: %WallUP,
 	Vector2i.RIGHT: %WallRight,
