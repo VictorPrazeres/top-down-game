@@ -6,6 +6,7 @@ class_name Arena extends Node
 var grid: Dictionary[Vector2i, LevelRoom] = {}
 var start_room_coord: Vector2i
 var end_room_coord: Vector2i
+var grid_cell_size: Vector2i
 
 @onready var health_bar: TextureProgressBar = %HealthBar
 @onready var mana_bar: TextureProgressBar = %ManaBar
@@ -14,6 +15,11 @@ var end_room_coord: Vector2i
 func _ready() -> void:
 	Cursor.texture.texture = arena_cursor
 	EventBus.on_player_health_updated.connect(_on_player_health_updated)
+	
+	grid_cell_size = Vector2i(
+		level_data.room_size.x + level_data.corridor_size.x,
+		level_data.room_size.y + level_data.corridor_size.y
+	)
 	
 	generate_level_layout()
 	select_special_rooms()
@@ -56,7 +62,7 @@ func create_rooms() -> void:
 	print("Creating rooms...")
 	for room_coord: Vector2i in grid.keys():
 		var room_instance: LevelRoom = level_data.room_scene.instantiate()
-		room_instance.position = room_coord * level_data.room_size
+		room_instance.position = room_coord * grid_cell_size
 		add_child(room_instance)
 		
 		# Link each coord with a room instance
@@ -75,18 +81,16 @@ func create_corridors() -> void:
 		var right_neighbor = room_coord + Vector2i.RIGHT
 		if grid.has(right_neighbor):
 			var corridor: Node2D = level_data.h_corridor.instantiate()
-			var room_pos = room_instance.position
-			var neighbor_pos = grid[right_neighbor].position
-			corridor.position = (room_pos + neighbor_pos) / 2.0
+			corridor.position = room_instance.position + Vector2(
+				grid_cell_size.x / 2.0, 0)
 			add_child(corridor)
 		
 		# Create down connection
 		var down_neighbor = room_coord + Vector2i.DOWN
 		if grid.has(down_neighbor):
 			var corridor: Node2D = level_data.v_corridor.instantiate()
-			var room_pos = room_instance.position
-			var neighbor_pos = grid[down_neighbor].position
-			corridor.position = (room_pos + neighbor_pos) / 2.0
+			corridor.position = room_instance.position + Vector2(
+				0, grid_cell_size.y / 2.0)
 			add_child(corridor)
 
 
