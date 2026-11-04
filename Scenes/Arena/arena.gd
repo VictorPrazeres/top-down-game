@@ -18,6 +18,7 @@ func _ready() -> void:
 	generate_level_layout()
 	select_special_rooms()
 	create_rooms()
+	create_corridors()
 	#load_game_selection()
 
 
@@ -36,12 +37,14 @@ func generate_level_layout() -> void:
 		var random_direction = directions.pick_random()
 		var next_coord = current_coord + random_direction
 		
+		# If next_coord exists, find a new one
 		var attempts = 0
 		while grid.has(next_coord) and attempts < 10:
 			random_direction = directions.pick_random()
 			next_coord = current_coord + random_direction
 			attempts += 1
 		
+		# If next_coord is valid, add to grid
 		if not grid.has(next_coord):
 			grid[next_coord] = null
 	
@@ -56,10 +59,35 @@ func create_rooms() -> void:
 		room_instance.position = room_coord * level_data.room_size
 		add_child(room_instance)
 		
+		# Link each coord with a room instance
 		grid[room_coord] = room_instance
-		connect_rooms(room_coord, room_instance)
 		
-		await get_tree().create_timer(0.5).timeout
+		# connect rooms using directions
+		connect_rooms(room_coord, room_instance)
+
+
+func create_corridors() -> void:
+	print("Creating corridors...")
+	for room_coord: Vector2i in grid.keys():
+		var room_instance: LevelRoom = grid[room_coord]
+		
+		# Create right connection
+		var right_neighbor = room_coord + Vector2i.RIGHT
+		if grid.has(right_neighbor):
+			var corridor: Node2D = level_data.h_corridor.instantiate()
+			var room_pos = room_instance.position
+			var neighbor_pos = grid[right_neighbor].position
+			corridor.position = (room_pos + neighbor_pos) / 2.0
+			add_child(corridor)
+		
+		# Create down connection
+		var down_neighbor = room_coord + Vector2i.DOWN
+		if grid.has(down_neighbor):
+			var corridor: Node2D = level_data.v_corridor.instantiate()
+			var room_pos = room_instance.position
+			var neighbor_pos = grid[down_neighbor].position
+			corridor.position = (room_pos + neighbor_pos) / 2.0
+			add_child(corridor)
 
 
 func connect_rooms(room_coord: Vector2i, room_instance: LevelRoom) -> void:
