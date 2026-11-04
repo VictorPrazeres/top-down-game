@@ -87,3 +87,6 @@ stretch_margin_right = 3
 texture_under = ExtResource("3_t7yvt")
 texture_over = ExtResource("4_11not")
 texture_progress = ExtResource("6_11not")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1378080386]
+zoom = Vector2(0.15, 0.15)

@@ -17,7 +17,8 @@ func _ready() -> void:
 	
 	generate_level_layout()
 	select_special_rooms()
-	load_game_selection()
+	create_rooms()
+	#load_game_selection()
 
 
 func generate_level_layout() -> void:
@@ -46,6 +47,27 @@ func generate_level_layout() -> void:
 	
 	for key: Vector2i in grid.keys():
 		print(key)
+
+
+func create_rooms() -> void:
+	print("Creating rooms...")
+	for room_coord: Vector2i in grid.keys():
+		var room_instance: LevelRoom = level_data.room_scene.instantiate()
+		room_instance.position = room_coord * level_data.room_size
+		add_child(room_instance)
+		
+		grid[room_coord] = room_instance
+		connect_rooms(room_coord, room_instance)
+		
+		await get_tree().create_timer(0.5).timeout
+
+
+func connect_rooms(room_coord: Vector2i, room_instance: LevelRoom) -> void:
+	var directions := [Vector2i.UP, Vector2i.DOWN, Vector2i.RIGHT, Vector2i.LEFT]
+	for direction in directions:
+		var neighbor_coord = room_coord + direction
+		if grid.has(neighbor_coord):
+			room_instance.open_wall(direction)
 
 
 func select_special_rooms() -> void:
