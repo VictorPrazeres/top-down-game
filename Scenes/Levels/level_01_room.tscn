@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://db0vbpknm0aas" path="res://Scenes/Levels/room.gd" id="1_dnve6"]
 [ext_resource type="TileSet" uid="uid://coudre3itgc43" path="res://Extra/level_01_tileset.tres" id="2_5mnrw"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mnrw"]
+size = Vector2(290, 260)
+
 [node name="Level_01_room" type="Node2D" unique_id=2034808858]
 script = ExtResource("1_dnve6")
 
@@ -68,3 +71,12 @@ tile_set = ExtResource("2_5mnrw")
 
 [node name="PlayerSpawnPos" type="Marker2D" parent="." unique_id=2229874]
 position = Vector2(0, 70)
+
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=1095047208]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=1191361689]
+shape = SubResource("RectangleShape2D_5mnrw")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

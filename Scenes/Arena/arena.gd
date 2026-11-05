@@ -7,6 +7,8 @@ var grid: Dictionary[Vector2i, LevelRoom] = {}
 var start_room_coord: Vector2i
 var end_room_coord: Vector2i
 var grid_cell_size: Vector2i
+var current_room: LevelRoom
+var player: Player
 
 @onready var health_bar: TextureProgressBar = %HealthBar
 @onready var mana_bar: TextureProgressBar = %ManaBar
@@ -15,6 +17,7 @@ var grid_cell_size: Vector2i
 func _ready() -> void:
 	Cursor.texture.texture = arena_cursor
 	EventBus.on_player_health_updated.connect(_on_player_health_updated)
+	EventBus.on_player_room_entered.connect(_on_player_room_entered)
 	
 	grid_cell_size = Vector2i(
 		level_data.room_size.x + level_data.corridor_size.x,
@@ -26,6 +29,15 @@ func _ready() -> void:
 	create_rooms()
 	create_corridors()
 	load_game_selection()
+	
+	var first_room: LevelRoom = grid[Vector2i.ZERO]
+	first_room.is_cleared = true
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		current_room.unlock_room()
+		current_room.is_cleared = true
 
 
 func generate_level_layout() -> void:
@@ -121,7 +133,7 @@ func find_farthest_room() -> Vector2i:
 
 
 func load_game_selection() -> void:
-	var player: Player = Global.get_player().instantiate()
+	player = Global.get_player().instantiate()
 	var first_room: LevelRoom = grid[Vector2i.ZERO]
 	var spawn_pos: Marker2D = first_room.player_spawn_pos
 	add_child(player)
@@ -131,3 +143,9 @@ func load_game_selection() -> void:
 
 func _on_player_health_updated(current_health: float, max_health: float) -> void:
 	health_bar.value = current_health / max_health
+
+
+func _on_player_room_entered(room: LevelRoom) -> void:
+	current_room = room
+	if not room.is_cleared:
+		room.lock_room()

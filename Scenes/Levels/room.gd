@@ -20,15 +20,8 @@ var is_cleared: bool
 
 
 func _ready() -> void:
-	#close_all_walls()
+	close_all_walls()
 	register_tiles()
-
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		lock_room()
-	if event.is_action_pressed("ui_cancel"):
-		unlock_room()
 
 
 func register_tiles() -> void:
@@ -58,3 +51,7 @@ func open_wall(direction: Vector2i) -> void:
 func close_all_walls() -> void:
 	for key in room_walls:
 		room_walls[key].enabled = true
+
+
+func _on_player_detector_body_entered(_body: Node2D) -> void:
+	EventBus.on_player_room_entered.emit(self)
