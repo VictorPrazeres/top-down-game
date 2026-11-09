@@ -12,6 +12,7 @@ var player: Player
 
 @onready var health_bar: TextureProgressBar = %HealthBar
 @onready var mana_bar: TextureProgressBar = %ManaBar
+@onready var map_controller: MapController = $UI/MapController
 
 
 func _ready() -> void:
@@ -141,11 +142,23 @@ func load_game_selection() -> void:
 	player.weapon_controller.equip_weapon()
 
 
+func find_coord_from_room(room: LevelRoom) -> Vector2i:
+	for coord: Vector2i in grid:
+		if grid[coord] == room:
+			return coord
+	return Vector2i.MAX
+
 func _on_player_health_updated(current_health: float, max_health: float) -> void:
 	health_bar.value = current_health / max_health
 
 
 func _on_player_room_entered(room: LevelRoom) -> void:
-	current_room = room
-	if not room.is_cleared:
-		room.lock_room()
+	if room != current_room:
+		current_room = room
+	
+		var absolute_coord = find_coord_from_room(room)
+		var relative_coord = absolute_coord - start_room_coord
+		map_controller.update_on_room_entered(relative_coord)
+	
+		if not room.is_cleared:
+			room.lock_room()
