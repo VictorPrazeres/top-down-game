@@ -77,6 +77,7 @@ func create_rooms() -> void:
 		var room_instance: LevelRoom = level_data.room_scene.instantiate()
 		room_instance.position = room_coord * grid_cell_size
 		add_child(room_instance)
+		room_instance.create_props(level_data)
 		
 		# Link each coord with a room instance
 		grid[room_coord] = room_instance
@@ -147,6 +148,7 @@ func find_coord_from_room(room: LevelRoom) -> Vector2i:
 		if grid[coord] == room:
 			return coord
 	return Vector2i.MAX
+
 
 func _on_player_health_updated(current_health: float, max_health: float) -> void:
 	health_bar.value = current_health / max_health

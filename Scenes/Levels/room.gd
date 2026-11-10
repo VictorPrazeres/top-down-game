@@ -29,6 +29,16 @@ func register_tiles() -> void:
 		tiles.append(tile)
 
 
+func create_props(data: LevelData) -> void:
+	for i in data.max_props_per_room:
+		var tile_coord: Vector2i = tiles.pick_random()
+		var tile_pos: Vector2 = tile_data.map_to_local(tile_coord)
+		var random_prop = data.props.pick_random()
+		var instance: Area2D = random_prop.instantiate()
+		instance.position = tile_pos
+		add_child(instance)
+
+
 func lock_room() -> void:
 	for direction in clear_door_nodes:
 		var wall_door = room_walls[direction]
