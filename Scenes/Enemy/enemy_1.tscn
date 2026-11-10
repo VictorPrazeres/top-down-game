@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://bxvwm1ku7vx4e"]
+
+[ext_resource type="AudioStream" uid="uid://dmai3vjk5si8m" path="res://Sounds/enemy_hurt_1.ogg" id="1_aex4u"]
+[ext_resource type="Script" uid="uid://dumc2sh1k0nf3" path="res://Scenes/Enemy/enemy.gd" id="1_nwq83"]
+[ext_resource type="Texture2D" uid="uid://dawvmsgg5mc6o" path="res://Sprites/Shadow.png" id="3_7wfi3"]
+[ext_resource type="Texture2D" uid="uid://cgvslb1dnigc8" path="res://Sprites/Enemies/Sprites/tile_0000.png" id="3_rahvt"]
+[ext_resource type="Texture2D" uid="uid://d2gowyxbvkf5g" path="res://Sprites/Enemies/Sprites/tile_0001.png" id="4_7wfi3"]
+[ext_resource type="Texture2D" uid="uid://c4stgcaqqu7as" path="res://Sprites/Enemies/Sprites/tile_0003.png" id="4_45oeo"]
+[ext_resource type="Texture2D" uid="uid://bmi1eu80faffk" path="res://Sprites/Enemies/Sprites/tile_0002.png" id="5_iqetf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j1nct"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_45oeo")
+}],
+"loop": false,
+"name": &"die",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_iqetf")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_rahvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7wfi3")
+}],
+"loop": true,
+"name": &"move",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_scg6k"]
+radius = 2.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_45oeo"]
+radius = 7.0
+
+[node name="Enemy1" type="CharacterBody2D" unique_id=885987406]
+collision_layer = 4
+script = ExtResource("1_nwq83")
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=437473795]
+stream = ExtResource("1_aex4u")
+bus = &"SFX"
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=570275551]
+self_modulate = Color(1, 1, 1, 0.7058824)
+scale = Vector2(1.5, 1)
+texture = ExtResource("3_7wfi3")
+
+[node name="AnimTexture" type="AnimatedSprite2D" parent="." unique_id=771807719]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_j1nct")
+animation = &"move"
+autoplay = "move"
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1266601112]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_scg6k")
+
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=2144654738]
+collision_layer = 0
+collision_mask = 2
+
+[node name="AreaCollision" type="CollisionShape2D" parent="PlayerDetector" unique_id=556333120]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_45oeo")
