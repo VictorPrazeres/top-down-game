@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cf2ypr83psjfm" path="res://Sprites/Interface/bar_health.png" id="5_qnyor"]
 [ext_resource type="Texture2D" uid="uid://djtqrhxpxpjeg" path="res://Sprites/Interface/bar_mana.png" id="6_11not"]
 [ext_resource type="Script" uid="uid://ca5h1515nufaf" path="res://Scenes/Arena/map_controller.gd" id="10_vgwd8"]
+[ext_resource type="Script" uid="uid://bkwo2n3u467fl" path="res://Scenes/Arena/enemy_spawner.gd" id="11_xt8pn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rm3sm"]
 atlas = ExtResource("1_fp5lk")
@@ -101,3 +102,6 @@ offset_right = 140.0
 offset_bottom = -20.0
 grow_vertical = 0
 script = ExtResource("10_vgwd8")
+
+[node name="EnemySpawner" type="Node2D" parent="." unique_id=603485100]
+script = ExtResource("11_xt8pn")

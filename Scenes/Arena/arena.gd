@@ -13,12 +13,14 @@ var player: Player
 @onready var health_bar: TextureProgressBar = %HealthBar
 @onready var mana_bar: TextureProgressBar = %ManaBar
 @onready var map_controller: MapController = $UI/MapController
+@onready var enemy_spawner: EnemySpawner = $EnemySpawner
 
 
 func _ready() -> void:
 	Cursor.texture.texture = arena_cursor
 	EventBus.on_player_health_updated.connect(_on_player_health_updated)
 	EventBus.on_player_room_entered.connect(_on_player_room_entered)
+	EventBus.on_room_cleared.connect(_on_room_cleared)
 	
 	grid_cell_size = Vector2i(
 		level_data.room_size.x + level_data.corridor_size.x,
@@ -165,3 +167,9 @@ func _on_player_room_entered(room: LevelRoom) -> void:
 	
 		if not room.is_cleared:
 			room.lock_room()
+			enemy_spawner.spawn_enemies(level_data, room)
+
+
+func _on_room_cleared() -> void:
+	current_room.unlock_room()
+	current_room.is_cleared = true

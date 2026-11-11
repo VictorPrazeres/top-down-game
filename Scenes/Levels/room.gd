@@ -29,6 +29,11 @@ func register_tiles() -> void:
 		tiles.append(tile)
 
 
+func get_free_spawn_position() -> Vector2:
+	var tile_coord: Vector2i = tiles.pick_random()
+	return tile_data.map_to_local(tile_coord)
+
+
 func create_props(data: LevelData) -> void:
 	for i in data.max_props_per_room:
 		var tile_coord: Vector2i = tiles.pick_random()
