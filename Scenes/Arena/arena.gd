@@ -141,6 +141,7 @@ func load_game_selection() -> void:
 	add_child(player)
 	player.global_position = spawn_pos.global_position
 	player.weapon_controller.equip_weapon()
+	Global.player_ref = player
 
 
 func find_coord_from_room(room: LevelRoom) -> Vector2i:

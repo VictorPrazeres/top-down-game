@@ -74,3 +74,5 @@ collision_mask = 2
 [node name="AreaCollision" type="CollisionShape2D" parent="PlayerDetector" unique_id=556333120]
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_45oeo")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
