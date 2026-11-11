@@ -16,12 +16,19 @@ func spawn_enemies(data: LevelData, room: LevelRoom) -> void:
 	
 	var amount = randi_range(data.min_enemies_per_room, data.max_enemies_per_room)
 	for i in amount:
+		var spawn_local_pos = room.get_free_spawn_position()
+		var spawn_global_pos = room.to_global(spawn_local_pos)
+		
+		var marker = Global.SPAWN_MARKER_SCENE.instantiate()
+		marker.global_position = spawn_global_pos
+		get_parent().add_child(marker)
+		await marker.get_child(1).animation_finished
+		
 		var random_scene = data.enemy_scenes.pick_random()
 		var enemy: Enemy = random_scene.instantiate()
 		enemies.append(enemy)
 		get_parent().add_child(enemy)
-		var spawn_local_pos = room.get_free_spawn_position()
-		var spawn_global_pos = room.to_global(spawn_local_pos)
+		
 		enemy.global_position = spawn_global_pos
 
 
