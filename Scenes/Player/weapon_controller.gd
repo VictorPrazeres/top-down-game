@@ -9,7 +9,7 @@ func equip_weapon(data: WeaponData) -> void:
 	var weapon: Weapon = weapon_scene.instantiate()
 	weapon.global_position.y = -8
 	current_weapon = weapon
-	current_weapon.data = Global.selected_weapon
+	current_weapon.data = data
 	add_child(weapon)
 
 
