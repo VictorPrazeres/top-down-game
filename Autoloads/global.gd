@@ -4,6 +4,7 @@ const EXPLOSION_EFFECT_SCENE = preload("uid://gusc66iqufsn")
 const DAMAGE_TEXT_SCENE = preload("uid://bbodibp7vmq8c")
 const SPAWN_MARKER_SCENE = preload("uid://bx7ulfs4833r")
 const DEATH_PARTICLE_SCENE = preload("uid://daa671jtq214n")
+const HIT_MATERIAL = preload("uid://bvtcpygj3gpx4")
 
 var save_path = "user://save.json"
 var settings: Dictionary = {
@@ -59,9 +60,10 @@ func create_damage_text(value: float, pos: Vector2) -> void:
 	damage.setup(value)
 
 
-func create_death_particle(texture: Texture2D) -> void:
+func create_death_particle(texture: Texture2D, pos: Vector2) -> void:
 	var particle = DEATH_PARTICLE_SCENE.instantiate() as GPUParticles2D
 	get_tree().root.add_child(particle)
+	particle.global_position = pos
 	particle.texture = texture
 
 

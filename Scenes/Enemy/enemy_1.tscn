@@ -2,6 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://dmai3vjk5si8m" path="res://Sounds/enemy_hurt_1.ogg" id="1_aex4u"]
 [ext_resource type="Script" uid="uid://dumc2sh1k0nf3" path="res://Scenes/Enemy/enemy.gd" id="1_nwq83"]
+[ext_resource type="PackedScene" uid="uid://cm774d4hp3584" path="res://Scenes/Components/health_component.tscn" id="2_iqetf"]
 [ext_resource type="Texture2D" uid="uid://dawvmsgg5mc6o" path="res://Sprites/Shadow.png" id="3_7wfi3"]
 [ext_resource type="Texture2D" uid="uid://cgvslb1dnigc8" path="res://Sprites/Enemies/Sprites/tile_0000.png" id="3_rahvt"]
 [ext_resource type="Texture2D" uid="uid://d2gowyxbvkf5g" path="res://Sprites/Enemies/Sprites/tile_0001.png" id="4_7wfi3"]
@@ -44,9 +45,18 @@ radius = 2.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_45oeo"]
 radius = 7.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scg6k"]
+bg_color = Color(0.27058825, 0, 0.050980393, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdhqq"]
+bg_color = Color(0.9764706, 0, 0.28627452, 1)
+
 [node name="Enemy1" type="CharacterBody2D" unique_id=885987406]
+scale = Vector2(1.5, 1.5)
 collision_layer = 4
 script = ExtResource("1_nwq83")
+
+[node name="HealthComponent" parent="." unique_id=2043446417 instance=ExtResource("2_iqetf")]
 
 [node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=437473795]
 stream = ExtResource("1_aex4u")
@@ -75,4 +85,18 @@ collision_mask = 2
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_45oeo")
 
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=530205366]
+custom_minimum_size = Vector2(20, 2)
+offset_left = -10.0
+offset_top = -21.0
+offset_right = 10.0
+offset_bottom = -17.0
+theme_override_styles/background = SubResource("StyleBoxFlat_scg6k")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kdhqq")
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
+[connection signal="on_unit_damaged" from="HealthComponent" to="." method="_on_health_component_on_unit_damaged"]
+[connection signal="on_unit_dead" from="HealthComponent" to="." method="_on_health_component_on_unit_dead"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
