@@ -5,6 +5,7 @@ class_name Player extends CharacterBody2D
 var can_move := true
 var movement: Vector2
 var direction: Vector2
+var cooldown: float
 
 @onready var visuals: Node2D = $Visuals
 @onready var anim_texture: AnimatedSprite2D = %AnimTexture
@@ -14,6 +15,17 @@ var direction: Vector2
 
 func _ready() -> void:
 	health_component.init_health(data.max_hp)
+
+
+func _process(delta: float) -> void:
+	weapon_controller.target_position = get_global_mouse_position()
+	weapon_controller.rotate_weapon()
+	
+	cooldown -= delta
+	if Input.is_action_pressed("shoot"):
+		if cooldown <= 0:
+			weapon_controller.current_weapon.use_weapon()
+			cooldown = weapon_controller.current_weapon.data.cooldown
 
 
 func _physics_process(_delta: float) -> void:

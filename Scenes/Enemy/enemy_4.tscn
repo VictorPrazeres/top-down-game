@@ -2,9 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://bxvwm1ku7vx4e" path="res://Scenes/Enemy/enemy_1.tscn" id="1_oqcrg"]
 [ext_resource type="Texture2D" uid="uid://dt305ttjc2qw7" path="res://Sprites/Enemies/Sprites/tile_0015.png" id="2_5c6f1"]
+[ext_resource type="Resource" uid="uid://uusfqnah4bep" path="res://Data/Weapons/Enemy/enemy_pistol.tres" id="2_aw1f6"]
 [ext_resource type="Texture2D" uid="uid://xo043uc37wpm" path="res://Sprites/Enemies/Sprites/tile_0014.png" id="3_aw1f6"]
 [ext_resource type="Texture2D" uid="uid://cijt4b5liatug" path="res://Sprites/Enemies/Sprites/tile_0012.png" id="4_ul4wm"]
 [ext_resource type="Texture2D" uid="uid://dlawjfchfn4so" path="res://Sprites/Enemies/Sprites/tile_0013.png" id="5_8jaht"]
+[ext_resource type="PackedScene" uid="uid://bfoydybyraedm" path="res://Scenes/Weapons/weapon_controller.tscn" id="6_5c6f1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ukm2e"]
 animations = [{
@@ -40,10 +42,13 @@ animations = [{
 size = Vector2(16, 18)
 
 [node name="Enemy4" unique_id=885987406 instance=ExtResource("1_oqcrg")]
+weapon = ExtResource("2_aw1f6")
 
-[node name="AnimTexture" parent="." index="2" unique_id=771807719]
+[node name="AnimTexture" parent="." index="3" unique_id=771807719]
 sprite_frames = SubResource("SpriteFrames_ukm2e")
 
 [node name="AreaCollision" parent="PlayerDetector" parent_id_path=PackedInt32Array(2144654738) index="0" unique_id=556333120]
 position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_ltq7f")
+
+[node name="WeaponController" parent="." index="7" unique_id=565680061 instance=ExtResource("6_5c6f1")]

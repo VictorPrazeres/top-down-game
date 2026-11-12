@@ -18,11 +18,21 @@ var is_killed: bool = false
 @onready var hurt_sound: AudioStreamPlayer = $HurtSound
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var health_bar: ProgressBar = $HealthBar
+@onready var weapon_controller: WeaponController = $WeaponController
 
 
 func _ready() -> void:
 	health_bar.value = 1.0
 	health_component.init_health(max_health)
+	
+	if not weapon: return
+	weapon_controller.equip_weapon(weapon)
+
+
+func _process(_delta: float) -> void:
+	if not Global.player_ref: return
+	rotate_enemy()
+	manage_weapon()
 
 
 func _physics_process(_delta: float) -> void:
@@ -38,6 +48,13 @@ func _physics_process(_delta: float) -> void:
 	velocity = dir * chase_speed
 	move_and_slide()
 	rotate_enemy()
+
+
+func manage_weapon() -> void:
+	if not weapon: return
+	if not weapon_controller: return
+	weapon_controller.target_position = Global.player_ref.global_position
+	weapon_controller.rotate_weapon()
 
 
 func rotate_enemy() -> void:
