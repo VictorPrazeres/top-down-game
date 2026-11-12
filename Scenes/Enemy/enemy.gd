@@ -4,7 +4,7 @@ class_name Enemy extends CharacterBody2D
 @export var collision_damage := 2.0
 @export var death_texture: Texture2D
 @export_group("Enemy Chase")
-@export var chase_speed := 40.0
+@export var chase_speed := 60.0
 @export_group("Enemy Weapon")
 @export var move_speed := 40.0
 @export var weapon: WeaponData
@@ -14,6 +14,7 @@ var is_killed: bool = false
 
 @onready var anim_texture: AnimatedSprite2D = $AnimTexture
 @onready var player_detector: Area2D = $PlayerDetector
+@onready var enemy_detector: Area2D = $EnemyDetector
 @onready var hurt_sound: AudioStreamPlayer = $HurtSound
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var health_bar: ProgressBar = $HealthBar
@@ -29,6 +30,11 @@ func _physics_process(_delta: float) -> void:
 	if not can_move: return
 	
 	var dir := global_position.direction_to(Global.player_ref.global_position)
+	for enemy: Enemy in enemy_detector.get_overlapping_bodies():
+		if enemy != self and enemy.is_inside_tree():
+			var vector = global_position - enemy.global_position
+			dir += 10 * vector.normalized() / vector.length()
+	
 	velocity = dir * chase_speed
 	move_and_slide()
 	rotate_enemy()
@@ -42,6 +48,10 @@ func rotate_enemy() -> void:
 
 
 func enemy_dead() -> void:
+	if is_killed:
+		return
+	
+	is_killed = true
 	Global.create_death_particle(death_texture, global_position)
 	EventBus.on_enemy_die.emit()
 	queue_free()

@@ -45,6 +45,9 @@ radius = 2.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_45oeo"]
 radius = 7.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_iqetf"]
+radius = 34.666668
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scg6k"]
 bg_color = Color(0.27058825, 0, 0.050980393, 1)
 
@@ -84,6 +87,15 @@ collision_mask = 2
 [node name="AreaCollision" type="CollisionShape2D" parent="PlayerDetector" unique_id=556333120]
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_45oeo")
+
+[node name="EnemyDetector" type="Area2D" parent="." unique_id=28916998]
+collision_layer = 0
+collision_mask = 4
+
+[node name="EnemyCollision" type="CollisionShape2D" parent="EnemyDetector" unique_id=608530579]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_iqetf")
+debug_color = Color(0.9529412, 0, 0.5686275, 0.15686275)
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=530205366]
 custom_minimum_size = Vector2(20, 2)
