@@ -42,6 +42,8 @@ animations = [{
 size = Vector2(16, 18)
 
 [node name="Enemy4" unique_id=885987406 instance=ExtResource("1_oqcrg")]
+enemy_type = "Weapon"
+death_texture = ExtResource("2_5c6f1")
 weapon = ExtResource("2_aw1f6")
 
 [node name="AnimTexture" parent="." index="3" unique_id=771807719]

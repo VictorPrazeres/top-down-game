@@ -39,6 +39,8 @@ animations = [{
 }]
 
 [node name="Enemy3" unique_id=885987406 instance=ExtResource("1_e54ay")]
+enemy_type = "Weapon"
+death_texture = ExtResource("2_3cpes")
 weapon = ExtResource("2_1npbc")
 
 [node name="AnimTexture" parent="." index="3" unique_id=771807719]

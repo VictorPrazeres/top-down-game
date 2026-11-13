@@ -103,5 +103,6 @@ offset_bottom = -20.0
 grow_vertical = 0
 script = ExtResource("10_vgwd8")
 
-[node name="EnemySpawner" type="Node2D" parent="." unique_id=603485100]
+[node name="EnemySpawner" type="Node2D" parent="." unique_id=603485100 node_paths=PackedStringArray("arena")]
 script = ExtResource("11_xt8pn")
+arena = NodePath("..")

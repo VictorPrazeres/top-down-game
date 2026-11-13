@@ -65,6 +65,7 @@ func create_death_particle(texture: Texture2D, pos: Vector2) -> void:
 	get_tree().root.add_child(particle)
 	particle.global_position = pos
 	particle.texture = texture
+	particle.emitting = true
 
 
 func save_data() -> void:

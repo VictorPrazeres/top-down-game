@@ -40,8 +40,9 @@ animations = [{
 radius = 9.0
 
 [node name="Enemy2" unique_id=885987406 instance=ExtResource("1_t4rl3")]
+death_texture = ExtResource("2_3oo0a")
 
-[node name="AnimTexture" parent="." index="2" unique_id=771807719]
+[node name="AnimTexture" parent="." index="3" unique_id=771807719]
 sprite_frames = SubResource("SpriteFrames_ou7wb")
 
 [node name="AreaCollision" parent="PlayerDetector" parent_id_path=PackedInt32Array(2144654738) index="0" unique_id=556333120]

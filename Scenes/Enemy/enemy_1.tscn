@@ -58,6 +58,7 @@ bg_color = Color(0.9764706, 0, 0.28627452, 1)
 scale = Vector2(1.5, 1.5)
 collision_layer = 4
 script = ExtResource("1_nwq83")
+death_texture = ExtResource("4_45oeo")
 
 [node name="HealthComponent" parent="." unique_id=2043446417 instance=ExtResource("2_iqetf")]
 
