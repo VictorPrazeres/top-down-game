@@ -4,6 +4,7 @@ const EXPLOSION_EFFECT_SCENE = preload("uid://gusc66iqufsn")
 const DAMAGE_TEXT_SCENE = preload("uid://bbodibp7vmq8c")
 const SPAWN_MARKER_SCENE = preload("uid://bx7ulfs4833r")
 const DEATH_PARTICLE_SCENE = preload("uid://daa671jtq214n")
+const BLOOD_EFFECT_SCENE = preload("uid://cf310gv286jmd")
 const HIT_MATERIAL = preload("uid://bvtcpygj3gpx4")
 
 var save_path = "user://save.json"
@@ -58,6 +59,9 @@ func create_damage_text(value: float, pos: Vector2) -> void:
 	var random_pos = randf_range(0, TAU)
 	damage.global_position = pos + Vector2.RIGHT.rotated(random_pos) * 20
 	damage.setup(value)
+	var blood = BLOOD_EFFECT_SCENE.instantiate()
+	get_parent().add_child(blood)
+	blood.global_position = pos
 
 
 func create_death_particle(texture: Texture2D, pos: Vector2) -> void:
