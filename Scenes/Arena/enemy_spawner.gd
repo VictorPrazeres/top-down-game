@@ -17,6 +17,7 @@ func spawn_enemies(data: LevelData, room: LevelRoom) -> void:
 	await get_tree().create_timer(0.5).timeout
 	
 	var amount = randi_range(data.min_enemies_per_room, data.max_enemies_per_room)
+	enemies_killed = amount
 	for i in amount:
 		var spawn_local_pos = room.get_free_spawn_position()
 		var spawn_global_pos = room.to_global(spawn_local_pos)
@@ -35,8 +36,8 @@ func spawn_enemies(data: LevelData, room: LevelRoom) -> void:
 
 
 func _on_enemy_die() -> void:
-	enemies_killed += 1
-	if enemies_killed >= enemies.size():
+	enemies_killed -= 1
+	if enemies_killed <= 0:
 		EventBus.on_room_cleared.emit()
 		enemies.clear()
 		enemies_killed = 0
